@@ -1,4 +1,4 @@
-# Jogo da memória desenvolvido com HTML, CSS e Javascript
+# Jogo da memória - times RJ/SP
 
-Projeto desenvolvido para o Assessment da disciplina Javascript.
+Projeto desenvolvido para o Assessment da disciplina Javascript, utilizando HTML, CSS e Javascript
 
