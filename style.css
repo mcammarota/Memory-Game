@@ -1,0 +1,97 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    background-color: lightgreen;
+}
+
+h1{
+    text-align: center;
+    font-family: Arial, serif;
+    margin: 25px 0 20px 120px;
+    font-size: 2.5em;
+}
+
+.tabuleiro {
+    height: 600px;
+    width: 600px;
+    display: flex;
+    margin: 0 auto;
+    flex-wrap: wrap;
+    perspective: 1000px;
+}
+
+#botao{
+    text-align: center;
+    width: 98%;
+    padding: 1em;
+    border-radius: 10px;
+    border: 1px solid gainsboro;
+    cursor: pointer;
+}
+
+.divbotao{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.carta {
+    height: 30%;
+    width: 23%;
+    margin: 4px;
+    position: relative;
+    box-shadow: 1px 1px 1px rgba(0, 0, 0, 1);
+    cursor: pointer;
+    transform: scale(1);
+    transform-style: preserve-3d;
+    transition: transform .9s;
+}
+
+.carta-frente, .carta-verso {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    border-radius: 5px;
+    background: white;
+    backface-visibility: hidden;
+    padding: 2px;
+}
+
+.carta-frente {
+    transform: rotateY(180deg);
+}
+
+.carta.flip {
+    transform: rotateY(180deg);
+}
+
+.carta:active {
+    transform: scale(0.97);
+    transition: transform .1s;
+}
+
+#melhorTempo{
+    margin-bottom: 5px;
+    width: 98%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: paleturquoise;
+}
+
+#timer{
+    width: 98%;
+    padding: 0.7em;
+    border-radius: 10px;
+    border: 1px solid black;
+    background-color: paleturquoise;
+}
+
+
+
+

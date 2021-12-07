@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>Assessment JS - Jogo da memória</title>
+</head>
+<body>
+    <main class="tabuleiro">
+
+        <h1>Jogo da Memória</h1>
+
+        <div class="divbotao">
+            <button id="botao" onclick="iniciarJogo()">Começar novo jogo</button>
+        </div>
+
+        <div class="divbotao">
+            <div>
+                <p>Melhor tempo: </p>
+                <p id="bestTime"></p>
+            </div>
+            <div>
+                <p id="timer">00:00</p>
+            </div>
+        </div>
+        
+        <div class="carta" data-carta="fluminense">
+            <img src="images/flu.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="flamengo">
+            <img src="images/fla.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="botafogo">
+            <img src="images/bota.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="vasco">
+            <img src="images/vasco.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="corinthians">
+            <img src="images/corinthians.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="palmeiras">
+            <img src="images/palmeiras.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="santos">
+            <img src="images/santos.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="sp">
+            <img src="images/sp.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="fluminense">
+            <img src="images/flu.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="flamengo">
+            <img src="images/fla.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="botafogo">
+            <img src="images/bota.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="vasco">
+            <img src="images/vasco.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="corinthians">
+            <img src="images/corinthians.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="palmeiras">
+            <img src="images/palmeiras.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="santos">
+            <img src="images/santos.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>
+        <div class="carta" data-carta="sp">
+            <img src="images/sp.png" alt="Face da carta" class="carta-frente">
+            <img src="images/box.jpg" alt="Verso da carta" class="carta-verso">
+        </div>        
+    </main>
+
+    <script src="./script.js"></script>
+</body>
+</html>
