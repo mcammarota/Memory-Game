@@ -3,7 +3,7 @@ let cartaVirada = false;
 let travarTabuleiro = false;
 let primeiraCarta, segundaCarta;
 let cont = 0;
-let localBestTime;
+let melhorTempoLocal;
 
 
 function iniciarJogo() {
@@ -66,19 +66,19 @@ function iniciarJogo() {
                 window.alert("Parabéns!");
                 window.location.reload();
             }, 500);
-            if (window.localStorage.getItem("seconds") == null) {
-                window.localStorage.setItem("minutes", minutes);
-                window.localStorage.setItem("seconds", seconds);
+            if (window.localStorage.getItem("segundos") == null) {
+                window.localStorage.setItem("minutos", minutos);
+                window.localStorage.setItem("segundos", segundos);
                 timerDisplay.innerHTML += " &#x1f3c6";
                 $("#timer").css("color", "yellow");
-                showBestTime();
-            } else if (minutes <= bestMinutes) {
-                if (seconds <= bestSeconds) {
-                    window.localStorage.setItem("minutes", minutes);
-                    window.localStorage.setItem("seconds", seconds);
+                mostrarMelhorTempo();
+            } else if (minutos <= melhorMinutos) {
+                if (segundos <= melhorSegundos) {
+                    window.localStorage.setItem("minutos", minutos);
+                    window.localStorage.setItem("segundos", segundos);
                     timerDisplay.innerHTML += " &#x1f3c6";
                     $("#timer").css("color", "yellow");
-                    showBestTime();
+                    mostrarMelhorTempo();
                 }
             }
         }
@@ -99,95 +99,91 @@ function iniciarJogo() {
     });
 }
 
-let bestMinutes = JSON.parse(window.localStorage.getItem("minutes"));
-let bestSeconds = JSON.parse(window.localStorage.getItem("seconds"));
-
-function showBestTime() {
-    bestMinutes = JSON.parse(window.localStorage.getItem("minutes"));
-    bestSeconds = JSON.parse(window.localStorage.getItem("seconds"));
-    bestTime.innerHTML =
-        (bestMinutes ? (bestMinutes > 9 ? bestMinutes : "0" + bestMinutes) : "00") +
-        ":" +
-        (bestSeconds > 9 ? bestSeconds : "0" + bestSeconds);
+function reset(){
+    window.location.reload();
+    iniciarJogo();
 }
 
-let bestTime = document.getElementById("bestTime");
-bestTime.innerHTML =
-    (bestMinutes ? (bestMinutes > 9 ? bestMinutes : "0" + bestMinutes) : "00") +
+let melhorMinutos = JSON.parse(window.localStorage.getItem("minutos"));
+let melhorSegundos = JSON.parse(window.localStorage.getItem("segundos"));
+
+function mostrarMelhorTempo() {
+    melhorMinutos = JSON.parse(window.localStorage.getItem("minutos"));
+    melhorSegundos = JSON.parse(window.localStorage.getItem("segundos"));
+    melhorTempo.innerHTML =
+        (melhorMinutos ? (melhorMinutos > 9 ? melhorMinutos : "0" + melhorMinutos) : "00") +
+        ":" +
+        (melhorSegundos > 9 ? melhorSegundos : "0" + melhorSegundos);
+}
+
+let melhorTempo = document.getElementById("melhorTempo");
+melhorTempo.innerHTML =
+    (melhorMinutos ? (melhorMinutos > 9 ? melhorMinutos : "0" + melhorMinutos) : "00") +
     ":" +
-    (bestSeconds > 9 ? bestSeconds : "0" + bestSeconds);
+    (melhorSegundos > 9 ? melhorSegundos : "0" + melhorSegundos);
 
 
 
 let timerDisplay = document.getElementById("timer");
 
-let seconds = 0;
+let segundos = 0;
 
-let minutes = 0;
+let minutos = 0;
 
-let t;
+let tempo;
 
-let running = false;
+let tempoCorrendo = false;
 
 function add() {
-    seconds++;
-    if (seconds >= 60) {
-        seconds = 0;
-        minutes++;
+    segundos++;
+    if (segundos >= 60) {
+        segundos = 0;
+        minutos++;
     }
 
     timerDisplay.innerHTML =
-        (minutes ? (minutes > 9 ? minutes : "0" + minutes) : "00") +
+        (minutos ? (minutos > 9 ? minutos : "0" + minutos) : "00") +
         ":" +
-        (seconds > 9 ? seconds : "0" + seconds);
+        (segundos > 9 ? segundos : "0" + segundos);
 
     timer();
 }
 
 function timer() {
-    t = setTimeout(add, 1000);
-    running = true;
+    tempo = setTimeout(add, 1000);
+    tempoCorrendo = true;
 }
 
 function timerStart() {
-    if (!running) {
+    if (!tempoCorrendo) {
         timer();
     }
 }
 
 function timerStop() {
-    clearTimeout(t);
-    running = false;
+    clearTimeout(tempo);
+    tempoCorrendo = false;
 }
 
-function saveLocalStoreNew() {
-    localStorage.bestTime = $('#timer').text()
+function salvarNovoLocalStorage() {
+    localStorage.melhorTempo = $('#timer').text()
 }
 
-function getLocalTime() {
-    localBestTime = localStorage.getItem('bestTime')
-    return localBestTime
+function getTempoLocal() {
+    melhorTempoLocal = localStorage.getItem('melhorTempo')
+    return melhorTempoLocal;
 }
 
-function showLocalBestTime() {
-    let localTime = getLocalTime()
-    if (localTime != null) {
-        alert("The Best Time is: " + localTime)
-    } else {
-        alert("No Best Time Store")
-    }
-}
-
-function convertTime(ms) {
+function converterTempo(ms) {
     var a = ms.split(':')
-    var seconds = (+a[0]) * 60 + (+a[1])
-    return seconds
+    var segundos = (+a[0]) * 60 + (+a[1])
+    return segundos
 }
 
-function checkNewTime(newTime) {
-    if (convertTime(localBestTime) == null) {
-        saveLocalStoreNew()
-    } else if (convertTime(newTime) <= convertTime(localBestTime)) {
-        saveLocalStoreNew()
+function checarNovoTempo(novoTempo) {
+    if (converterTempo(melhorTempoLocal) == null) {
+        salvarNovoLocalStorage();
+    } else if (converterTempo(novoTempo) <= converterTempo(melhorTempoLocal)) {
+        salvarNovoLocalStorage();
     }
 }
